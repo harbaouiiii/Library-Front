@@ -1,0 +1,27 @@
+{{setTitle()}}
+<app-navbar></app-navbar>
+<div class="container">
+    <h3 class="text-center m-3">List of Users <span class="badge badge-primary">{{users?.length}}</span></h3>
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td> {{user.name}} </td>
+                <td> {{user.email}} </td>
+                <td *ngIf="user.is_admin" class="text-primary">Admin</td>
+                <td *ngIf="!user.is_admin" class="text-info">User</td>
+                <td>
+                    <button class="btn btn-warning btn-sm mx-2" (click)="change(user._id)">Change permission</button>
+                    <button class="btn btn-danger btn-sm" (click)="delete(user._id,user)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

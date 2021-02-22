@@ -1,0 +1,34 @@
+{{setTitle()}}
+<app-navbar></app-navbar>
+<div class="container">
+    <h2 class="my-3">Add a Book</h2>
+    <form class="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="nom">Title</label>
+            <input type="text" [(ngModel)]="book.title" required name="title" placeholder="Title.." class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="nom">By </label>
+            <input type="text" [(ngModel)]="book.by" required name="by" placeholder="By.." class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="nom">Genre</label>
+            <input type="text" [(ngModel)]="book.genre" required name="genre" placeholder="Genre.." class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="nom">Age Level</label>
+            <input type="text" [(ngModel)]="book.age_level" required name="age_level" placeholder="Age Level.." class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="nom">Description</label>
+            <textarea [(ngModel)]="book.description" name="description" cols="30" rows="5" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="nom">Qte in stock</label>
+            <input type="text" [(ngModel)]="book.no_stock" required name="no_stock" placeholder="Qte..." class="form-control">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+</div>

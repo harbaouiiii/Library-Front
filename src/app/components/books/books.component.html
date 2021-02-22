@@ -1,0 +1,32 @@
+{{setTitle()}}
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let book of books" class="col-sm-6 my-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title center"><b>{{book.title}}</b></h5>
+                    <p class="card-text">
+                        <span><b>Genre:</b> {{book.genre}}</span> <br>
+                        <span><b>By:</b> {{book.by}}</span> <br>
+                        <span><b>Age Level:</b> {{book.age_level}}</span><br>
+                        <span><b>Description:</b> {{book.description}}</span><br>
+                        <span *ngIf="isAdmin()"><b>Quantity:</b> {{book.no_stock}} <br></span>
+                        <span *ngIf="isAdmin()"><b>Added by:</b> {{book.added_by}} <br></span>
+                        <span *ngIf="isAdmin()"><b>Creation date:</b> {{book.date_creation  | date :'EEEE, dd/MM/YYYY-hh:mma' }} <br></span>
+                        <span *ngIf="isAdmin()"><b>Modification date:</b> {{book.modification_date  | date :'EEEE, dd/MM/YYYY-hh:mma' }}</span>
+                    </p>
+                    <span *ngIf="book.no_stock==0">
+                        <button class="btn btn-info btn-sm" disabled>Borrow</button>  
+                        <span class="text-danger small bold"> Not available!</span>
+                    </span>
+                    <span *ngIf="book.no_stock>0">
+                        <button class="btn btn-info btn-sm">Borrow</button> 
+                    </span>
+                    <button *ngIf="isAdmin()" class="btn btn-warning btn-sm mx-2" [routerLink]="['/update-book',book._id]">Update</button>
+                    <button *ngIf="isAdmin()" class="btn btn-danger btn-sm" (click)="deleteBook(book)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
